@@ -1,6 +1,6 @@
 package br.edu.ifpb.ads.padroes.atv1.domain;
 
-import br.edu.ifpb.ads.padroes.atv1.notification.ServicoNotificacao;
+import br.edu.ifpb.ads.padroes.atv1.service.notificacao.ServicoNotificacao;
 
 public class Interessado {
 
@@ -33,8 +33,18 @@ public class Interessado {
     }
 
     public void notificar(Disco disco) {
-        servicoNotificacao.enviar(
-                "Novo disco encontrado: " + disco.getTitulo()
-        );
+        String mensagem = switch (tipoInteresse) {
+
+            case TITULO ->
+                    "Novo disco adicionado: " + disco.getTitulo();
+
+            case ARTISTA ->
+                    "Novo disco do artista: " + disco.getArtista();
+
+            case GENERO ->
+                    "Novo disco do gênero: " + disco.getGenero();
+        };
+
+        servicoNotificacao.enviar(mensagem);
     }
 }

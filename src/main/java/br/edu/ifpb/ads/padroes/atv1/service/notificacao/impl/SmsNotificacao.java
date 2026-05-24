@@ -1,6 +1,6 @@
-package br.edu.ifpb.ads.padroes.atv1.notification.impl;
+package br.edu.ifpb.ads.padroes.atv1.service.notificacao.impl;
 
-import br.edu.ifpb.ads.padroes.atv1.notification.ServicoNotificacao;
+import br.edu.ifpb.ads.padroes.atv1.service.notificacao.ServicoNotificacao;
 
 public class SmsNotificacao implements ServicoNotificacao {
     @Override
