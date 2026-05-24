@@ -4,7 +4,6 @@ import br.edu.ifpb.ads.padroes.atv1.domain.Disco;
 import br.edu.ifpb.ads.padroes.atv1.domain.Interessado;
 import br.edu.ifpb.ads.padroes.atv1.domain.TipoInteresse;
 import br.edu.ifpb.ads.padroes.atv1.repository.RepositorioDiscos;
-import br.edu.ifpb.ads.padroes.atv1.service.discos.GerenciadorDiscos;
 import br.edu.ifpb.ads.padroes.atv1.service.notificacao.impl.EmailNotificacao;
 import br.edu.ifpb.ads.padroes.atv1.service.notificacao.impl.PushNotificacao;
 import br.edu.ifpb.ads.padroes.atv1.service.notificacao.impl.SmsNotificacao;
@@ -15,9 +14,6 @@ public class Main {
     public static void main(String[] args) {
 
         RepositorioDiscos repositorio = new RepositorioDiscos();
-
-        GerenciadorDiscos gerenciador =
-                new GerenciadorDiscos(repositorio);
 
         Interessado interessado1 = new Interessado(
                 TipoInteresse.ARTISTA,
@@ -37,9 +33,9 @@ public class Main {
                 new PushNotificacao()
         );
 
-        gerenciador.addInteressado(interessado1);
-        gerenciador.addInteressado(interessado2);
-        gerenciador.addInteressado(interessado3);
+        repositorio.addInteressado(interessado1);
+        repositorio.addInteressado(interessado2);
+        repositorio.addInteressado(interessado3);
 
         Disco disco1 = new Disco(
                 "Metallica",
@@ -62,8 +58,8 @@ public class Main {
                 2005
         );
 
-        gerenciador.addDisco(disco1);
-        gerenciador.addDisco(disco2);
-        gerenciador.addDisco(disco3);
+        repositorio.addDisco(disco1);
+        repositorio.addDisco(disco2);
+        repositorio.addDisco(disco3);
     }
 }
