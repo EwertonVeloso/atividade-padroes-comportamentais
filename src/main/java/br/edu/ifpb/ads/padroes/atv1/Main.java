@@ -2,7 +2,9 @@ package br.edu.ifpb.ads.padroes.atv1;
 
 import br.edu.ifpb.ads.padroes.atv1.domain.Disco;
 import br.edu.ifpb.ads.padroes.atv1.domain.Interessado;
-import br.edu.ifpb.ads.padroes.atv1.domain.TipoInteresse;
+import br.edu.ifpb.ads.padroes.atv1.domain.estrategias.impl.InteressePorArtista;
+import br.edu.ifpb.ads.padroes.atv1.domain.estrategias.impl.InteressePorGenero;
+import br.edu.ifpb.ads.padroes.atv1.domain.estrategias.impl.InteressePorTitulo;
 import br.edu.ifpb.ads.padroes.atv1.repository.RepositorioDiscos;
 import br.edu.ifpb.ads.padroes.atv1.service.notificacao.impl.EmailNotificacao;
 import br.edu.ifpb.ads.padroes.atv1.service.notificacao.impl.PushNotificacao;
@@ -16,19 +18,19 @@ public class Main {
         RepositorioDiscos repositorio = new RepositorioDiscos();
 
         Interessado interessado1 = new Interessado(
-                TipoInteresse.ARTISTA,
+                new InteressePorArtista(),
                 "Metallica",
                 new EmailNotificacao()
         );
 
         Interessado interessado2 = new Interessado(
-                TipoInteresse.GENERO,
+                new InteressePorGenero(),
                 "Rock",
                 new SmsNotificacao()
         );
 
         Interessado interessado3 = new Interessado(
-                TipoInteresse.TITULO,
+                new InteressePorTitulo(),
                 "All We Know Is Falling",
                 new PushNotificacao()
         );
